@@ -134,20 +134,9 @@ something like the following:
    header to e.g. `blog`. Also create a `blog.twig` in your theme directory.
    This template will show a list of your articles, so you probably want to
    do something like this:
-   ```
-    {% for page in pages|sort_by("time")|reverse %}
-        {% if page.id starts with "blog/" %}
-            <div class="post">
-                <h3><a href="{{ page.url }}">{{ page.title }}</a></h3>
-                <p class="date">{{ page.date_formatted }}</p>
-                <p class="excerpt">{{ page.description }}</p>
-            </div>
-        {% endif %}
-    {% endfor %}
-   ```
 4. Make sure to exclude blog articles from your page navigation. You can achieve
    this by adding `{% if not (page.id starts with "blog/") %}...{% endif %}`
-   to the navigation loop (`{% for page in pages %}...{% endfor %}`) in your
+   to the navigation loop () in your
    theme's `index.twig`.
 
 ## Customization
@@ -196,20 +185,7 @@ to use in your theme. Please note that paths (e.g. `{{ base_dir }}`) and URLs
     * ...
 * `{{ content }}` - The content of the current page
                     (after it has been processed through Markdown)
-* `{{ pages }}` - A collection of all the content pages in your site
-    * `{{ page.id }}` - The relative path to the content file (unique ID)
-    * `{{ page.url }}` - The URL to the page
-    * `{{ page.title }}` - The title of the page (YAML header)
-    * `{{ page.description }}` - The description of the page (YAML header)
-    * `{{ page.author }}` - The author of the page (YAML header)
-    * `{{ page.time }}` - The timestamp derived from the `Date` header
-    * `{{ page.date }}` - The date of the page (YAML header)
-    * `{{ page.date_formatted }}` - The formatted date of the page
-    * `{{ page.raw_content }}` - The raw, not yet parsed contents of the page;
-                                 use Twigs `content` filter to get the parsed
-                                 contents of a page by passing its unique ID
-                                 (e.g. `{{ "sub/page"|content }}`)
-    * `{{ page.meta }}`- The meta values of the page
+
 * `{{ prev_page }}` - The data of the previous page (relative to `current_page`)
 * `{{ current_page }}` - The data of the current page
 * `{{ next_page }}` - The data of the next page (relative to `current_page`)
@@ -217,21 +193,17 @@ to use in your theme. Please note that paths (e.g. `{{ base_dir }}`) and URLs
 
 Pages can be used like the following:
 
-    <ul class="nav">
-        {% for page in pages %}
-            <li><a href="{{ page.url }}">{{ page.title }}</a></li>
-        {% endfor %}
-    </ul>
+
 
 Additional to Twigs extensive list of filters, functions and tags, Pico also
 provides some useful additional filters to make theming easier. You can parse
 any Markdown string to HTML using the `markdown` filter. Arrays can be sorted
 by one of its keys or a arbitrary deep sub-key using the `sort_by` filter
-(e.g. `{% for page in pages|sort_by([ 'meta', 'nav' ]) %}...{% endfor %}`
+(e.g. 
 iterates through all pages, ordered by the `nav` meta header; please note the
 `[ 'meta', 'nav' ]` part of the example, it instructs Pico to sort by
 `page.meta.nav`). You can return all values of a given key or key path of an
-array using the `map` filter (e.g. `{{ pages|map("title") }}` returns all
+array using the `map` filter (e.g.  returns all
 page titles).
 
 You can use different templates for different content files by specifying the
