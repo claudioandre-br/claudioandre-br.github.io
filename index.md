@@ -3,7 +3,7 @@ Title: Main title
 Description: Main.
 ---
 
-Esta é minha página de divulgação de projetos pessoais que possam ser de interesse da comunidade.
+Página pessoal de divulgação de projetos.
 
 ### Palestras
 
@@ -35,4 +35,4 @@ Esta é minha página de divulgação de projetos pessoais que possam ser de int
 
 ### Outros Textos
 - Texto sobre OpenCL no John the Ripper (com crypt SHA-512)
-- John the Ripper via Ubuntu on Windows
+- [Binario ELF64 do Ubuntu rodando no Windows](./outros/winux.htm)
