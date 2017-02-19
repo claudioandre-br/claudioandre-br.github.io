@@ -1,0 +1,187 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<meta http-equiv="CONTENT-TYPE" content="text/html; charset=utf-8">
+	<title>John the Ripper Ubuntu binaries running on Windows</title>
+	<meta name="verify-v1" content="Yvf4MtdJ3wv/I8mj8BTdqkAB801roKkCPvq28t6N9ck="/>
+	<meta http-equiv="Content-Language" content="pt-BR"/>
+	<meta name="author" content="Claudio André"/>
+	<meta name="copyright" content="Copyright © Claudio André. Todos os direitos reservados."/>
+	<meta name="revisit-after" content="1 days"/>
+	<meta name="distribution" content="Global"/>
+	<meta name="description" content="OpenCL SHA-512 crypt no John the Ripper"/>
+	<meta name="keywords" content="Site Pessoal, Trabalho Científico; Software Livre; Qualidade de Sotware; Engenharia de Software"/>
+
+	<!-- Folha de estilos -->
+	<link rel='stylesheet' id='estilo-css' href='/estilo.css' type='text/css'/>
+	<!-- Google +1 -->
+	<html itemscope itemtype="http://schema.org/Person">
+	<meta itemprop="name" content="OpenCL SHA-512 crypt no John the Ripper">
+	<meta itemprop="description" content="WSL, John the Ripper, Ubuntu on Windows">
+
+	<!-- Google Analitics -->
+	<script type="text/javascript">
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-10099135-1']);
+		  _gaq.push(['_trackPageview']);
+		  (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+	</script>
+	<script type="text/javascript">
+		//Evento externo sem timeout para garantir que registra o evento
+		function eventoClick(link, type) {
+			_gaq.push(['_trackEvent', 'Links', link.id]);
+
+			if (type) {
+		  		window.open(link);
+				event.preventDefault ? event.preventDefault() : event.returnValue = false;
+			}
+		}
+		function eventoSair(){
+			_gaq.push(['_trackEvent','Navegar','eventoSair']);
+		}
+		window.onunload = eventoSair;
+	</script>
+</head>
+
+<body lang="en" dir="LTR">
+<center>
+<table width='800' border='1' cellpadding='0' cellspacing='0' style="page-break-before: always">
+<tr>
+	<td>
+		<table width='100%' border='0' cellpadding='0' cellspacing='0'>
+		<tr>
+			<td align="left" width="150" border='2'>
+			</td>
+			<td width="40" bgcolor="#b9c8e1">
+				  
+			</td>
+			<td bgcolor="#b9c8e1">
+				<h2>Claudio André</h2>
+				<p>
+					Ubuntu ELF binaries on Windows, a case study					
+				</p>
+
+				<!-- Tag to the +1 button to render -->
+				<g:plusone annotation="inline"></g:plusone>
+				<script type="text/javascript">
+				  window.___gcfg = {lang: 'pt-BR'};
+				  (function() {
+				    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+				    po.src = 'https://apis.google.com/js/plusone.js';
+				    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+				  })();
+				</script>
+			</td>
+		</tr>
+		</table>
+	</td>
+</tr>
+</table>
+<table width='800' border='0' cellpadding='0' cellspacing='0' style="page-break-before: always">
+<tr>
+	<td>
+		<table width='100%' border='0' cellpadding='20' cellspacing='0' style="page-break-before: always">
+		<tr bgcolor="#ffffff">
+			<td bgcolor="#b9c8e1" align="justify" leftmargin="10px" topmargin="1px" marginwidth="0px" marginheight="0px">
+				<!-- BEGIN lista de links -->
+				<p>
+				</p>
+				    <b>Updated: </b> Jun 14, 2016 12:00 <br>
+				    <br>
+It is possible to run a native Linux program (the same binary, without changes) on a Windows machine? No VM, no container, no tricks? Pure ELF Ubuntu binaries on Windows?<br>
+				    <br>
+I tested the famous sofware <i><a href="http://openwall.com/john/">John The Ripper</a></i> Jumbo on Windows 10 64bits Insider Preview [1]. John was compiled on Ubuntu 14.04.4 LTS and copied to Windows along with the required libraries [2]. The result was quite satisfactory, no fatal or irreparable error occurred. As a matter of fact, John running on Windows beats some results on Ubuntu [3].<br>
+				    <br>
+
+Table 1. Comparison in number of candidates evaluated per second (c/s) [4]<br>
+<table style="border: 2px solid gray; border-spacing: 7px">
+  <tr>
+    <th>Format</th>
+    <th>Windows c/s  [5]</th> 
+    <th>Linux c/s [5]</th>
+    <th>Windows c/s  [6]</th> 
+    <th>Linux c/s [6]</th>
+  </tr>
+  <tr>
+    <td>raw-sha512</td>
+    <td style="text-align:center">8933K</td> 
+    <td style="text-align:center">9172K</td>
+    <td style="text-align:center">2734K</td>
+    <td style="text-align:center">2641K</td>
+  </tr>
+  <tr>
+    <td>raw-sha256</td>
+    <td style="text-align:center">15347K</td> 
+    <td style="text-align:center">14745K</td>
+    <td style="text-align:center">6131K</td>
+    <td style="text-align:center">5271K</td>
+  </tr>
+  <tr>
+    <td>sha512crypt</td>
+    <td style="text-align:center">2792</td> 
+    <td style="text-align:center">2671</td>
+    <td style="text-align:center">548</td>
+    <td style="text-align:center">520</td>
+  </tr>
+  <tr>
+    <td>sha256crypt</td>
+    <td style="text-align:center">3375</td> 
+    <td style="text-align:center">2871</td>
+    <td style="text-align:center">773</td>
+    <td style="text-align:center">653</td>
+  </tr>
+</table>
+Note: K stand for "kilo", meaning one thousand (multiply the number by 1000).<br>	
+		    <br>
+<img src="https://cloud.githubusercontent.com/assets/1702923/15993386/d3dd434c-30ba-11e6-98c6-0ceb2a77d3f9.png" alt="Print Screen" style="width: 100%; max-height: 100%"><br>
+				    <br>
+A native Linux program, full of advanced features, including fork, running on Windows? Beautiful! Isn't it?<br>
+				    <br>
+
+[1] This feature is under development by Microsoft and Canonical.<br>
+[2] I changed LD_LIBRARY_PATH accordingly.<br>
+[3] We are comparing Windows (mature Ubuntu 14.04.4 LTS environment) against an Ubuntu 16.04 LTS SNAP app. <br>
+[4] Running on the same computer, via dual-booting. On Linux, I used the SNAP app available on Ubuntu Store for 16.04 LTS.<br>
+[5] Running 6 threads (via OpenMP).<br>
+[6] Only one thread running (via OMP_THREAD_LIMIT = 1).<br>
+
+ 				<!-- END lista de links -->
+			</td>
+		</tr>
+		</table>
+	</td>
+</tr>
+</table>
+</center>
+
+<!-- BEGIN rodapé -->
+<div style="clear:both;">
+</div>
+<div id="rodape">
+	<div id="rodapeleft">
+		<p>
+			© 2003-2011 <a id='Página principal' href="http://www.claudioandre.drivehq.com/" 
+			onclick="eventoClick(this, 0);">
+			Claudio André. </a> Todos os direitos reservados
+		</p>
+	</div>
+	<div id="rodaperight">
+		<p>
+			<script language="JavaScript">
+			document.write("<a id='Email' href='mail" + "to:" + 
+				"claudioandre.br" + "%40" + "gmail.com?Subject=Duvida%20do%20site' " + 
+				"onClick='eventoClick(this, 0);'" + "> " + "Entrar em contato</a>");
+		</script>
+		</p>
+	</div>
+</div>
+<!-- END rodapé -->
+<p>
+	<br>
+</p>
+</body>
+</html>

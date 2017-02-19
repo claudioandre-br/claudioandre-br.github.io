@@ -1,0 +1,229 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<meta http-equiv="CONTENT-TYPE" content="text/html; charset=utf-8">
+	<title>OpenCL SHA-512 crypt no John the Ripper (Claudio André)</title>
+	<meta name="verify-v1" content="Yvf4MtdJ3wv/I8mj8BTdqkAB801roKkCPvq28t6N9ck="/>
+	<meta http-equiv="Content-Language" content="pt-BR"/>
+	<meta name="author" content="Claudio André"/>
+	<meta name="copyright" content="Copyright © Claudio André. Todos os direitos reservados."/>
+	<meta name="revisit-after" content="1 days"/>
+	<meta name="distribution" content="Global"/>
+	<meta name="description" content="OpenCL SHA-512 crypt no John the Ripper"/>
+	<meta name="keywords" content="Site Pessoal, Trabalho Científico; Software Livre; Qualidade de Sotware; Engenharia de Software"/>
+
+	<!-- Folha de estilos -->
+	<link rel='stylesheet' id='estilo-css' href='/estilo.css' type='text/css'/>
+	<!-- Google +1 -->
+	<html itemscope itemtype="http://schema.org/Person">
+	<meta itemprop="name" content="OpenCL SHA-512 crypt no John the Ripper">
+	<meta itemprop="description" content="Trabalhos acadêmicos, interesses, novidades">
+
+	<!-- Google Analitics -->
+	<script type="text/javascript">
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-10099135-1']);
+		  _gaq.push(['_trackPageview']);
+		  (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+	</script>
+	<script type="text/javascript">
+		//Evento externo sem timeout para garantir que registra o evento
+		function eventoClick(link, type) {
+			_gaq.push(['_trackEvent', 'Links', link.id]);
+
+			if (type) {
+		  		window.open(link);
+				event.preventDefault ? event.preventDefault() : event.returnValue = false;
+			}
+		}
+		function eventoSair(){
+			_gaq.push(['_trackEvent','Navegar','eventoSair']);
+		}
+		window.onunload = eventoSair;
+	</script>
+</head>
+
+<body lang="pt-BR" dir="LTR">
+<center>
+<table width='800' border='1' cellpadding='0' cellspacing='0' style="page-break-before: always">
+<tr>
+	<td>
+		<table width='100%' border='0' cellpadding='0' cellspacing='0'>
+		<tr>
+			<td align="left" width="150" border='2'>
+			</td>
+			<td width="40" bgcolor="#b9c8e1">
+				  
+			</td>
+			<td bgcolor="#b9c8e1">
+				<h2>Claudio André</h2>
+				<p>
+					O impacto das GPUs na quebra de senhas					
+				</p>
+
+				<!-- Tag to the +1 button to render -->
+				<g:plusone annotation="inline"></g:plusone>
+				<script type="text/javascript">
+				  window.___gcfg = {lang: 'pt-BR'};
+				  (function() {
+				    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+				    po.src = 'https://apis.google.com/js/plusone.js';
+				    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+				  })();
+				</script>
+			</td>
+		</tr>
+		</table>
+	</td>
+</tr>
+</table>
+<table width='800' border='0' cellpadding='0' cellspacing='0' style="page-break-before: always">
+<tr>
+	<td>
+		<table width='100%' border='0' cellpadding='20' cellspacing='0' style="page-break-before: always">
+		<tr bgcolor="#ffffff">
+			<td bgcolor="#b9c8e1" align="justify" leftmargin="10px" topmargin="1px" marginwidth="0px" marginheight="0px">
+				<!-- BEGIN lista de links -->
+				<p>
+				</p>
+				    <b>Atualizado: </b> 01/12/2015 às 12:00 <br>
+                                   <p align="center"> <font color="red">
+                                   Em meados de 2015 o software foi novamente otimizado o que gerou novo ganho de desepenho na 
+                                   GPU.<br><br>
+                                    </font> </p>
+				    O software de auditoria de senhas
+				      <i><a href="http://openwall.com/john/">John The
+					Ripper</a></i> incluiu recentemente em sua <a
+				      href="https://github.com/magnumripper/magnum-jumbo">árvore de
+				      desenvolvimento</a> o suporte à quebra do protocolo <a
+				      href="http://www.akkadia.org/drepper/sha-crypt.html">SHA-512 crypt</a>
+				    via <a
+				      href="http://pt.wikipedia.org/wiki/Computa%C3%A7%C3%A3o_paralela">programação
+				      massivamente paralela</a>. O SHA-512 crypt é o mecanismo de cifragem
+				    de senhas atualmente em uso nas distribuições Linux. <br>
+				    <br>
+				    Portanto, a partir desta versão é possível utilizar o paralelismo
+				    oferecido pelas modernas GPUs para acelerar a descoberta de senhas
+				    do Linux. Neste protocolo o <i>John</i> já oferecia acesso ao poder das GPUs NVIDIA
+				    através do <a
+				      href="http://br.nvidia.com/object/cuda_home_new_br.html">CUDA</a>.
+				    Porém, esta nova versão suporta AMD, NVIDIA, Intel e qualquer outro dispositivo
+				    compatível com o padrão <a href="http://www.khronos.org/opencl/">OpenCL</a>, inclusive CPUs 			            multicore.
+				    Assim, a gama de dispositivos suportados se amplia e não está mais
+				    está restrita apenas às GPUs. <br>
+				    <br>
+				    No momento é possível comprar GPUs que oferecem centenas, algumas, milhares
+				    de núcleos de processamento (seu <i>chip dual core</i>
+				    deve morrer de inveja). Este grau de paralelismo pode diminuir muito o 
+				    tempo gasto para se executar uma tarefa. Fiz um teste comparando uma GPU 
+                                    Radeon HD 6770 e um processador X6 1075 de 3GHz (usando todos os 6 núcleos) e a GPU 
+			            foi capaz de realizar quase quatro vezes mais trabalho no mesmo intervalo de tempo. <br>
+				    <br>
+				    Como nem tudo são flores, mais rigor e cautela devem ser empregados ao se definir uma
+                                    senha. A partir de agora, será mais fácil quebrá-la. <br>
+				    <br>
+				    Interessante notar que uma pesquisa no Google sugere que nenhum
+				    outro software oferece este recurso. Sequer os caros sistemas
+				    proprietários (agora, início de 2013, outras ferramentas oferecem).
+                                    E o <b>desenvolvimento foi feito por brasileiros</b>.<br>
+				    <br>
+				    Testar a nova versão é simples e os pré requisitos são poucos:
+				    drivers proprietários, OpenSSL e OpenCL instalados.<br>
+				    - git clone git://github.com/magnumripper/JohnTheRipper.git paralelo<br>
+				    - cd paralelo/src<br>
+				    - make linux-x86-64-opencl<br>
+				    - ../run/john <i>arquivo_de_senhas</i> --format=sha512crypt-opencl<br>
+				    <br>
+				    Mais informações sobre como instalar a partir dos fontes pode ser encontrada (em inglês) em:
+				      <a href="http://www.openwall.com/john/doc/INSTALL.shtml"/>
+					http://www.openwall.com/john/doc/INSTALL.shtml</a>.<br>
+<br><b>Conclusão dos testes realizados: </b><br>
+Ao se considerar o investimento necessário, os resultados obtidos na GPU foram bons, ou seja, um pequeno investimento gerou um ganho de desempenho adequado. Porém, ao se considerar as especificações da placa Radeon HD 6770, as expectativas eram maiores e fiquei um pouco decepcionado.
+
+<br><br>Mas, apesar do OpenCL ser uma tecnologia recente, seu potencial ficou comprovado: é sempre bom lembrar que um computador com esta configuração custa seis vezes mais que a GPU Radeon 6770.
+<br><br>Portanto, os riscos de segurança só aumentaram. E, claro, as GPUs seguem evoluindo, inclusive em circuitos híbridos, como as APUs. <br><br>
+
+<hr width=60%>
+<br><b>[Atualizado V]</b><br>
+A performance foi novamente ajustada. Vejamos:<br>
+- a Radeon HD 6770 (fora de linha) processa, aproximadamente, 10.800 senhas candidatas por segundo (c/s).<br> 
+- um núcleo de uma CPU SSE2 processa de 200 a 300 c/s. Com AVX2 atingimos 2.300 c/s.<br>
+- usando TODOS os núcleos de uma CPU topo de linha é possível processar 2.000 c/s. Com AVX2 9.000 c/s.<br>
+- Portanto, a GPU HD 6770 é mais rápida que a moderna CPU Intel i7-4770K [1].<br>
+- Usando-se uma GPU TITAN X é possível processar mais de 110.000 senhas por segundo.<br>
+<br>
+[1] Intel(R) Core(TM) i7-4770K CPU @ 3.50GHz (US$ 400 - Amazon, nov/2015).<br>
+
+<br>
+
+<br><b>[Atualizado IV]</b><br>
+A performance em GPUs AMD melhorou consideravelmente. Vejamos:<br>
+- a Radeon HD 6770 (velhinha e fora de linha) processa, aproximadamente, 9.000 senhas candidatas por segundo.<br> 
+- usando um núcleo de uma CPU topo de linha é possível processar de 200 a 300 senhas por segundo APENAS.<br>
+- usando TODOS os núcleos de uma CPU topo de linha é possível processar 2.000 senhas por segundo.<br>
+- Um servidor com duas CPUs [1] usando TODOS os núcleos disponíveis [2] processa 5.700 senhas por segundo.<br>
+- Portanto, a GPU HD 6770 foi mais rápida que o  servidor que custa milhares de dólares.<br>
+<br>
+[1] Intel(R) Xeon(R) CPU E5-2670 0 @ 2.60GHz (US$ 1500 cada CPU - Amazon, out/2014).<br>
+[2] São 8 núcleos por CPU, máximo de 16 threads por CPU. Portanto, foram 32 threads em execução.<br>
+
+<br>
+<b>[Atualizado III]</b><br>
+Esta nova versão (paralela) do John the Ripper foi usada em um concurso. Os resultados podem ser vistos em: <br>
+- <a href="http://contest-2012.korelogic.com/stats_sha512crypt.html"/>http://contest-2012.korelogic.com/stats_sha512crypt.html </a>(resultado do SHA 512).<br>
+- <a href="http://contest-2012.korelogic.com/stats.html"/>http://contest-2012.korelogic.com/stats.html </a>(resultado geral).
+<br>
+<br><b>[Atualizado II]</b><br>
+Mais algums números. Desta feita, comparando-se os resultados com um programa tradicional, ou seja, um programa que usa APENAS um núcleo da CPU:<br>
+- a GTX 570 é 35,7 vezes mais rápida que o processador AMD FX™-8120 Eight-Core Processor.<br>
+- a GTX 570 é 29,8 vezes mais rápida que o processador AMD Phenom™ II X6 1075T Processor.<br>
+- a Radeon HD 7970 é 36,6 vezes mais rápida que o processador AMD FX™-8120 Eight-Core Processor.<br>
+- a Radeon HD 7970 é 30,5 vezes mais rápida que o processador AMD Phenom™ II X6 1075T Processor.
+<br>
+<br><b>[Atualizado I]</b><br>
+Testei a quebra do protocolo em foco neste texto. Os tempos de execução foram comparados com as CPUs em capacidade máxima, ou seja, com todos os processadores em uso (via OpenMP). Abaixo alguns resultados:<br>
+- a GTX 570 é 8,6 vezes mais rápida que o processador AMD FX™-8120 Eight-Core Processor.<br>
+- a GTX 570 é 8,1 vezes mais rápida que o processador AMD Phenom™ II X6 1075T Processor.<br>
+- a Radeon HD 7970 é 8,8 mais rápida que o processador AMD FX™-8120 Eight-Core Processor.<br>
+- a Radeon HD 7970 é 8,3 mais rápida que o processador AMD Phenom™ II X6 1075T Processor.<br>
+ 				<!-- END lista de links -->
+
+			</td>
+		</tr>
+		</table>
+	</td>
+</tr>
+</table>
+</center>
+
+<!-- BEGIN rodapé -->
+<div style="clear:both;">
+</div>
+<div id="rodape">
+	<div id="rodapeleft">
+		<p>
+			© 2003-2011 <a id='Página principal' href="http://www.claudioandre.drivehq.com/" 
+			onclick="eventoClick(this, 0);">
+			Claudio André. </a> Todos os direitos reservados
+		</p>
+	</div>
+	<div id="rodaperight">
+		<p>
+			<script language="JavaScript">
+			document.write("<a id='Email' href='mail" + "to:" + 
+				"claudioandre.br" + "%40" + "gmail.com?Subject=Duvida%20do%20site' " + 
+				"onClick='eventoClick(this, 0);'" + "> " + "Entrar em contato</a>");
+		</script>
+		</p>
+	</div>
+</div>
+<!-- END rodapé -->
+<p>
+	<br>
+</p>
+</body>
+</html>
