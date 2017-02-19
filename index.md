@@ -3,7 +3,9 @@ Title: Main title
 Description: Main.
 ---
 
-## Palestras
+Esta é minha página de divulgação de projetos pessoais que possam ser de interesse da comunidade.
+
+### Palestras
 
 - Apresentação sobre OpenBRR
 - Apresentação sobre o conceito de software livre
@@ -11,7 +13,7 @@ Description: Main.
 - Apresentação sobre o autenticação no MapView do Android
 - Apresentação sobre o auditoria de senhas em hardware paralelo
 
-## Artigos
+### Artigos
 
 * Congresso. Portugal: CIAWI, 2008.
   - Avaliação de um produto de software livre: produto de automação de testes
@@ -28,9 +30,9 @@ Description: Main.
 * Congresso. Pouso Alegre: IFSULDEMINAS, 2014.
   - Estratégias de otimização de código em OpenCL
 
-## Arquivos Fonte
+### Arquivos Fonte
 - Arquivo fonte para controlador PIC16F84A
 
-## Outros Textos
+### Outros Textos
 - Texto sobre OpenCL no John the Ripper (com crypt SHA-512)
 - John the Ripper via Ubuntu on Windows
