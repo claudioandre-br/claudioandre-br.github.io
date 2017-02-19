@@ -13,21 +13,22 @@ Description: Main.
 
 ## Artigos
 
-Congresso. Portugal: CIAWI, 2008.
-- Avaliação de um produto de software livre: produto de automação de testes
+* Congresso. Portugal: CIAWI, 2008.
+  - Avaliação de um produto de software livre: produto de automação de testes
 
-Congresso. Guarulhos: SEMCITEC, 2012.
-- O Uso de Processamento Paralelo Como Ferramenta de Segurança
+* Congresso. Guarulhos: SEMCITEC, 2012.
+  - O Uso de Processamento Paralelo Como Ferramenta de Segurança
 
-Congressos. Alfenas: UNIFAL, 2014.
-- Os riscos de segurança inerentes ao uso dos modernos equipamentos médicos informatizados
-- Efeitos clínicos da segurança da informação em dispositivos médicos implantados
-- Um jogo eletrônico que ensina microbiologia para crianças
-- Uma janela de oportunidades na computação de alto desempenho
+* Congressos. Alfenas: UNIFAL, 2014.
+  - Os riscos de segurança inerentes ao uso dos modernos equipamentos médicos informatizados
+  - Efeitos clínicos da segurança da informação em dispositivos médicos implantados
+  - Um jogo eletrônico que ensina microbiologia para crianças
+  - Uma janela de oportunidades na computação de alto desempenho
 
-Congresso. Pouso Alegre: IFSULDEMINAS, 2014.
-- Estratégias de otimização de código em OpenCL
-- Arquivos Fonte
+* Congresso. Pouso Alegre: IFSULDEMINAS, 2014.
+  - Estratégias de otimização de código em OpenCL
+
+## Arquivos Fonte
 - Arquivo fonte para controlador PIC16F84A
 
 ## Outros Textos
