@@ -1,0 +1,56 @@
+/************************************************
+*	Links      				*
+************************************************/	
+a:hover { 
+	color: #cc0000;
+}
+
+
+/************************************************
+*	Rodapé      				*
+************************************************/
+#rodape {
+	background: #36609d;
+	width: 800px;
+	height: 30px;
+	margin: 0px auto 0px;
+	padding: 0px 0px 0px 0px;
+}
+	
+#rodape p {
+	color: #FFFFFF;
+	font-size: 11px;
+	font-family: Arial, Tahoma, Verdana;
+	margin: 0px;
+	padding: 0px 10px 0px 10px;
+}
+	
+#rodape a, #rodape a:visited {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+	
+#rodape a:hover {
+	text-decoration: underline;
+}
+	
+#rodape a img {
+	border: none;
+	margin: 0px 0px 0px 10px;
+	padding: 0px;
+	}
+	
+#rodapeleft {
+	width: 480px;
+	float: left;
+	margin: 0px;
+	padding: 10px 0px 0px 0px;
+}
+	
+#rodaperight {
+	width: 280px;
+	float: right;
+	margin: 0px;
+	padding: 7px 0px 0px 0px;
+	text-align: right;
+}
