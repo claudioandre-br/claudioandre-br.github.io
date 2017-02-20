@@ -1,0 +1,180 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<meta http-equiv="CONTENT-TYPE" content="text/html; charset=utf-8">
+	<title>Criando um pacote "Ubuntu Snap" do IRPF 2017</title>
+	<meta name="verify-v1" content="Yvf4MtdJ3wv/I8mj8BTdqkAB801roKkCPvq28t6N9ck="/>
+	<meta http-equiv="Content-Language" content="pt-BR"/>
+	<meta name="author" content="Claudio André"/>
+	<meta name="copyright" content="Copyright © Claudio André. Todos os direitos reservados."/>
+	<meta name="revisit-after" content="1 days"/>
+	<meta name="distribution" content="Global"/>
+	<meta name="description" content="OpenCL SHA-512 crypt no John the Ripper"/>
+	<meta name="keywords" content="Site Pessoal, Trabalho Científico; Software Livre; Qualidade de Sotware; Engenharia de Software"/>
+
+	<!-- Folha de estilos -->
+	<link rel='stylesheet' id='estilo-css' href='/estilo.css' type='text/css'/>
+	<!-- Google +1 -->
+	<html itemscope itemtype="http://schema.org/Person">
+	<meta itemprop="name" content="IRPF 2017 Snap">
+	<meta itemprop="description" content="Snap, IRPF 2017, Ubuntu">
+
+	<!-- Google Analitics -->
+	<script type="text/javascript">
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-10099135-1']);
+		  _gaq.push(['_trackPageview']);
+		  (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+	</script>
+	<script type="text/javascript">
+		//Evento externo sem timeout para garantir que registra o evento
+		function eventoClick(link, type) {
+			_gaq.push(['_trackEvent', 'Links', link.id]);
+
+			if (type) {
+		  		window.open(link);
+				event.preventDefault ? event.preventDefault() : event.returnValue = false;
+			}
+		}
+		function eventoSair(){
+			_gaq.push(['_trackEvent','Navegar','eventoSair']);
+		}
+		window.onunload = eventoSair;
+	</script>
+</head>
+
+<body lang="en" dir="LTR">
+<center>
+<table width='800' border='1' cellpadding='0' cellspacing='0' style="page-break-before: always">
+<tr>
+	<td>
+		<table width='100%' border='0' cellpadding='0' cellspacing='0'>
+		<tr>
+			<td align="left" width="150" border='2'>
+			</td>
+			<td width="40" bgcolor="#b9c8e1">
+				  
+			</td>
+			<td bgcolor="#b9c8e1">
+				<h2>Claudio André</h2>
+				<p>
+					Que tal distribuir o programa do IRPF 2017 de outras formas?
+				</p>
+
+				<!-- Tag to the +1 button to render -->
+				<g:plusone annotation="inline"></g:plusone>
+				<script type="text/javascript">
+				  window.___gcfg = {lang: 'pt-BR'};
+				  (function() {
+				    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+				    po.src = 'https://apis.google.com/js/plusone.js';
+				    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+				  })();
+				</script>
+			</td>
+		</tr>
+		</table>
+	</td>
+</tr>
+</table>
+<table width='800' border='0' cellpadding='0' cellspacing='0' style="page-break-before: always">
+<tr>
+	<td>
+		<table width='100%' border='0' cellpadding='20' cellspacing='0' style="page-break-before: always">
+		<tr bgcolor="#ffffff">
+			<td bgcolor="#b9c8e1" align="justify" leftmargin="10px" topmargin="1px" marginwidth="0px" marginheight="0px">
+				<!-- BEGIN lista de links -->
+				<p>
+				</p>
+				    <b>Atualizado: </b> 24/02/2017 17:00<br>
+				    <br>
+Não é novidade que estão em desenvolvimento novas formas para se distribuir e empacotar software para Linux. Descato o <a href="http://snapcraft.io/">Snap</a> e o <a href="http://flatpak.org/">Flatpak</a> [1,2]. Em poucas palavras, são duas propostas sobre como distribuir aplicações Linux em uma ampla gama de distribuições distintas. Em resumo, ambas são tecnologias para distribuir aplicações de forma segura e conteinerizada [3].<br>
+				    <br>
+Como um estudo de caso, criei um pacote do IRPF 2017 como um Snap e o publiquei na loja da Canonical. Quero destacar que não vejo impedimento para que um pacote Flatpak também seja criado; simplesmente, fiz uma escolha baseada em minha preferência (eu uso Ubuntu) [4].<br>
+				    <br>
+Um pacote Snap é um arquivo zip chique que contém um aplicativo juntamente com suas dependências e uma descrição de como ele deve ser executado com segurança em seu sistema.<br>
+				    <br>
+
+<b>IMPORTANTE</b><br>
+<ul>
+  <li>Empacotei os mesmos binários presentes no zip disponível no site da Receita. Confirme isto usando <i>diff</i>;</li>
+  <li>Eu instalei e estou usando o Snap do IRPF 2017 que criei. Mas, não estou tentando te convencer a usá-lo;</li>
+  <li>Meu objetivo é convidar aqueles que me lêem a discutir estas novas possibilidades;</li>
+  <li>Eu NÃO tenho autorização para redistribuir o software da Receita;</li>
+  <li>Confira o "roteiro" que eu usei acessando <a href="https://gist.github.com/claudioandre/d70dee12324580db0e2bafea38760ee9">este site</a>.</li>
+</ul>
+<br>
+
+<b>Como instalar e usar?</b><br>
+<ul>
+  <li>Testei no Ubuntu 16.04 LTS;</li>
+  <li><i>sudo apt-get install snapd</i> # a depender de sua distro;</li>
+  <li><i>sudo snap install irpf2017</i>;</li>
+  <li>O programa aparecerá no menu; Caso prefira, digite <i>irpf2017</i> no terminal;</li>
+  <li></li>
+  <li>Eu importei a declaração de 2016, preenchi os dados de 2017. Porém, não pude testar todas as funcionalidades; especificamente, o envio não está disponível ainda;</li>
+  <li>Nenhum problema foi encontrado.</li>
+</ul>
+<br>
+
+<b>Por que criar um pacote é importante? Ou útil?</b><br>				    <br>
+A resposta é simples: o pacote criado possui TODAS as dependências necessárias para sua execução, inclusive as dependências gráficas. O usuário não precisa se preocupar em descobrir, selecionar, ou resolver problemas de instalação do JAVA ou quaisquer bibliotecas. <br>
+				    <br>
+
+Caso o mantenedor do pacote submeta novas versões, a atualização é automática, sem o risco de se sobreescrever os dados já salvos na(s) versão(ões) anteriores. <br>
+				    <br>
+
+Portanto, se a Receita publicasse o pacote desta forma, não haveria nenhuma necessidade de tutoriais explicando como obter o JAVA, qual versão se deve instalar, ou qualquer coisa assim. <br>
+				    <br>
+
+Mas, esta é só uma reflexão.<br>
+				    <br>
+<hr width="1" size="20">
+
+[1] A Canonical está investindo bastante no desenvolvimento do "ambiente" Snap.<br>
+[2] O Flatpak atraiu a atenção de algumas distribuições, como a Endless.<br>
+[3] Esclareço minha <b>opinião</b> sobre as tecnologias listadas: <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- A solução de engenharia de software em uso no Flatpak é superior à solução da Canonical. Por outro lado,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- O ambiente Canonical (loja de aplicativos, build servers disponíveis, base de usuários, etc) é um grande atrativo.<br>
+[4] Além disto, eu aposto em um grande futuro para o Ubuntu Snap em IoT.<br>
+
+ 				<!-- END lista de links -->
+			</td>
+		</tr>
+		</table>
+	</td>
+</tr>
+</table>
+</center>
+
+<!-- BEGIN rodapé -->
+<div style="clear:both;">
+</div>
+<div id="rodape">
+	<div id="rodapeleft">
+		<p>
+			© 2003-2011 <a id='Página principal' href="http://www.claudioandre.drivehq.com/" 
+			onclick="eventoClick(this, 0);">
+			Claudio André. </a> Todos os direitos reservados
+		</p>
+	</div>
+	<div id="rodaperight">
+		<p>
+			<script language="JavaScript">
+			document.write("<a id='Email' href='mail" + "to:" + 
+				"claudioandre.br" + "%40" + "gmail.com?Subject=Duvida%20do%20site' " + 
+				"onClick='eventoClick(this, 0);'" + "> " + "Entrar em contato</a>");
+		</script>
+		</p>
+	</div>
+</div>
+<!-- END rodapé -->
+<p>
+	<br>
+</p>
+</body>
+</html>
