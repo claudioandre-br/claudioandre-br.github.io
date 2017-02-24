@@ -36,3 +36,4 @@ Página pessoal para divulgação de alguns de meus projetos.
 ### Outros Textos
 - [OpenCL crypt SHA-512 no John the Ripper](./outros/john.htm)
 - [Binario ELF64 do Ubuntu rodando no Windows](./outros/winux.htm)
+- [IRPF 2017 empacotado com suas dependências](./outros/irpf_package.htm)
