@@ -126,7 +126,7 @@ Quero destacar que não vejo impedimento para que o pacote Flatpak do IRPF 2017 
   <li>Salvei o recido de entrega PDF em uma pasta qualquer no meu $HOME;</li>
   <li>O que <b>NÃO FUNCIONOU</B>: o envio da declaração para a Receita [6];</li>
   <li>Além do problema no envio, nenhum outro problema foi encontrado;</li>
-  <li>Portanto, o uso de caso possível seria preencher os dados com o Snap e transmitir em outro computador.</li>
+  <li>Portanto, o uso de caso possível seria preencher os dados com o Snap e transmitir em outro computador [7].</li>
 </ul>
 <br>
 
@@ -140,6 +140,9 @@ Caso o mantenedor do pacote submeta novas versões, a atualização é automáti
 Portanto, se a Receita publicasse o pacote desta forma, não haveria nenhuma necessidade de tutoriais explicando como obter o JAVA, qual versão se deve instalar, ou qualquer coisa assim. <br>
 				    <br>
 
+Criar pacotes para outras arquiteturas como ARM (armhf ou arm64) não é difícil. Na realidade, eu tenho pacotes criados para todas as arquiteturas suportadas pela Canonical.<br>
+				    <br>
+
 Mas, esta é só minha avaliação. Faça seus testes e descubra qual a sua!<br>
 				    <br>
 <hr width="1" size="20">
@@ -151,11 +154,12 @@ Mas, esta é só minha avaliação. Faça seus testes e descubra qual a sua!<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- A solução de engenharia de software em uso no Flatpak é superior à solução da Canonical. Por outro lado,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- O ambiente Canonical (loja de aplicativos, build servers disponíveis, base de usuários, etc) é um grande atrativo.<br>
 [4] Além disto, eu aposto em um grande futuro para o Ubuntu Snap em IoT.<br>
-[5] Como eu disse anteriormente, a aplicação executa em um ambiente seguro. <br>
+[5] Como eu disse anteriormente, a aplicação executa em um ambiente seguro: <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- O acesso às portas USB, serial, ..., é vedado por padrão. O desenvolvedor precisa solicitar este acesso via .yaml.<br>
-[6] A Canonical decidiu que não é seguro acessar diretórios "ocultos" de $HOME.<br>
+[6] A Canonical decidiu que não é seguro acessar diretórios "ocultos" de $HOME:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- No caso, .java/ e .receitanet/ (entre outros) foram acessados pelo programa do IR e este acesso foi bloqueado.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Este é um exemplo cristalino de decisão de projeto equivocado da Canonical.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Este é um exemplo cristalino de decisão de projeto equivocado da Canonical.<br>
+[7] Existem alternativas para superar os limites de segurança. Porém, elas não são adequadas ao usuário final.
  				<!-- END lista de links -->
 			</td>
 		</tr>
