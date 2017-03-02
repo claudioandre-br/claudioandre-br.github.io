@@ -90,7 +90,7 @@
 				<!-- BEGIN lista de links -->
 				<p>
 				</p>
-				    <b>Atualizado: </b> 25/02/2017 11:00<br>
+				    <b>Atualizado: </b> 02/03/2017 11:00<br>
 				    <br>
 Não é novidade que novas formas para se distribuir e empacotar software para Linux estão em desenvolvimento. Destaco o <a href="http://snapcraft.io/">Snap</a> e o <a href="http://flatpak.org/">Flatpak</a> [1,2]. Em poucas palavras, são duas propostas sobre como distribuir aplicações Linux em uma ampla gama de distribuições distintas. Em resumo, ambas são tecnologias para distribuir aplicações de forma segura e conteinerizada [3].<br>
 				    <br>
@@ -105,7 +105,7 @@ Quero destacar que não vejo impedimento para que o pacote Flatpak do IRPF 2017 
   <li>Eu instalei e estou usando o Snap do IRPF 2017 que criei. Mas, NÃO estou tentando te convencer a usá-lo;</li>
   <li>Meu objetivo é convidar aqueles que me lêem a discutir estas novas possibilidades;</li>
   <li>Eu NÃO tenho autorização para redistribuir o software da Receita;</li>
-  <li>Confira o "roteiro" de criação do pacote acessando <a href="https://gist.github.com/claudioandre/d70dee12324580db0e2bafea38760ee9">este site</a>.</li>
+  <li>Confira o "roteiro" de criação do pacote acessando o arquivo .yaml <a href="https://gist.github.com/claudioandre/d70dee12324580db0e2bafea38760ee9">neste site</a>.</li>
 </ul>
 <br>
 
@@ -114,15 +114,24 @@ Quero destacar que não vejo impedimento para que o pacote Flatpak do IRPF 2017 
   <li>Testei no Ubuntu 16.04 LTS;</li>
   <li><i>sudo apt-get install snapd</i> # a depender de sua distro;</li>
   <li><i>sudo snap install irpf2017</i>;</li>
-  <li>O programa aparecerá no menu; Caso prefira, digite <i>irpf2017</i> no terminal;</li>
-  <li></li>
-  <li>Eu importei a declaração de 2016, preenchi os dados de 2017. Porém, não pude testar todas as funcionalidades; especificamente, o envio não está disponível ainda;</li>
-  <li>Nenhum problema foi encontrado.</li>
+  <li>O programa aparecerá no menu; Caso prefira, digite <i>irpf2017</i> no terminal.</li>
+</ul>
+<br>
+
+<b>Eu usei o pacote Snap para fazer minha declaração de IR</b><br>
+<ul>
+  <li>Eu importei os dados da declaração de 2016;</li>
+  <li>Preenchi os dados referentes a 2017;</li>
+  <li>Fiz a impressão (visualizar, não a impressão em papel [5]) da declaração e do recibo de entrega;</li>
+  <li>Salvei o recido de entrega PDF em uma pasta qualquer no meu $HOME;</li>
+  <li>O que <b>NÃO FUNCIONOU</B>: o envio da declaração para a Receita [6];</li>
+  <li>Além do problema no envio, nenhum outro problema foi encontrado;</li>
+  <li>Portanto, o uso de caso possível seria preencher os dados com o Snap e transmitir em outro computador.</li>
 </ul>
 <br>
 
 <b>Por que criar um pacote é importante? Ou útil?</b><br>				    <br>
-A resposta é simples: o pacote criado possui TODAS as dependências necessárias para sua execução, inclusive as dependências gráficas. O usuário não precisa se preocupar em descobrir, selecionar, ou resolver problemas de instalação do JAVA ou quaisquer bibliotecas. <br>
+A resposta é simples: o pacote criado possui TODAS as dependências necessárias para sua execução, inclusive as dependências gráficas. O usuário não precisa se preocupar em descobrir, selecionar, ou resolver problemas de instalação do JAVA. Ou de quaisquer outras bibliotecas. <br>
 				    <br>
 
 Caso o mantenedor do pacote submeta novas versões, a atualização é automática, sem o risco de se sobreescrever os dados já salvos na(s) versão(ões) anterior(es). <br>
@@ -142,7 +151,11 @@ Mas, esta é só minha avaliação. Faça seus testes e descubra qual a sua!<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- A solução de engenharia de software em uso no Flatpak é superior à solução da Canonical. Por outro lado,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- O ambiente Canonical (loja de aplicativos, build servers disponíveis, base de usuários, etc) é um grande atrativo.<br>
 [4] Além disto, eu aposto em um grande futuro para o Ubuntu Snap em IoT.<br>
-
+[5] Como eu disse anteriormente, a aplicação executa em um ambiente seguro. <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- O acesso às portas USB, serial, ..., é vedado por padrão. O desenvolvedor precisa solicitar este acesso via .yaml.<br>
+[6] A Canonical decidiu que não é seguro acessar diretórios "ocultos" de $HOME.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- No caso, .java/ e .receitanet/ (entre outros) foram acessados pelo programa do IR e este acesso foi bloqueado.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Este é um exemplo cristalino de decisão de projeto equivocado da Canonical.
  				<!-- END lista de links -->
 			</td>
 		</tr>
@@ -158,7 +171,7 @@ Mas, esta é só minha avaliação. Faça seus testes e descubra qual a sua!<br>
 <div id="rodape">
 	<div id="rodapeleft">
 		<p>
-			© 2003-2011 <a id='Página principal' href="https://claudioandre.github.io/" 
+			© 2017 <a id='Página principal' href="https://claudioandre.github.io/"
 			onclick="eventoClick(this, 0);">
 			Claudio André. </a> Todos os direitos reservados
 		</p>
